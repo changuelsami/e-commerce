@@ -6,7 +6,7 @@
 </head><!--/head-->
 
 <body>
-	<?php include("header.php") ?>
+	<?php require_once("header.php") ?>
 	
 	<section id="cart_items">
 		<div class="container">
@@ -46,6 +46,6 @@
 		</div>
 	</section> <!--/#cart_items-->
 	
-	<?php include("footer.php") ?>
+	<?php require_once("footer.php") ?>
 </body>
 </html>

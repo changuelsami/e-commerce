@@ -1,10 +1,10 @@
 <?php 
-include('verifier_access.php'); 
+require_once('verifier_access.php'); 
 
 @$id = $_GET['id'];
 
 if( !empty($id) ) {
-	include("../classes/Categorie.php");
+	require_once("../classes/Categorie.php");
 	$cat= new Categorie();
 	$cat->_id = $id;
 	$cat = $cat->details();
@@ -29,7 +29,7 @@ if( !empty($id) ) {
 </head>
 <body>
 
-  <?php include('header.php'); ?>
+  <?php require_once('header.php'); ?>
 
   <div class="container2">
     <h1><?php if( !empty($id) ) echo "Modifier"; else echo "Ajouter" ?> une catégorie</h1>
@@ -54,19 +54,18 @@ if( !empty($id) ) {
       <?php if( !empty($id) ) { ?>
       <tr>
         <th>
-          Logo actuel :           
+          Image actuelle :           
         </th>
         <td>  
-          <img src="../upload/<?php echo $cat->_logo; ?>" width="150" /> 
-          <input type="hidden" name="ancien_logo" value="<?php echo $cat->_logo; ?>" />
+          <img src="../upload/<?php echo $cat->_image; ?>" width="150" /> 
         </td>
       </tr>
       <?php } ?>
 
       <tr>
         <th>
-          Logo : <span style="color:red;">*</span>            </th>
-          <td><input type="file" name="logo" id="logo" /></td>
+          Image : <span style="color:red;">*</span>            </th>
+          <td><input type="file" name="image" id="image" /></td>
         </tr>
 
         <tr>

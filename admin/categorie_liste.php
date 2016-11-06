@@ -1,6 +1,6 @@
 <?php 	
-include('verifier_access.php'); 
-include("../classes/Categorie.php");
+require_once('verifier_access.php'); 
+require_once("../classes/Categorie.php");
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -19,7 +19,7 @@ include("../classes/Categorie.php");
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
             <![endif]-->
-            <?php include('header.php'); ?>
+            <?php require_once('header.php'); ?>
 
             <div class="container2">
               <h1>Liste des categories
@@ -76,7 +76,7 @@ include("../classes/Categorie.php");
               </div>
 
             </div>
-            <?php //include("categorie_modifier.php"); ?>
+            <?php //require_once("categorie_modifier.php"); ?>
             <hr>
 
             <script src="js/jquery.min.js"></script>

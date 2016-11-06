@@ -1,17 +1,19 @@
 <?php
-include("Mysql.php");
+require_once("Mysql.php");
 class Categorie extends Mysql
 {
 	// Les attributs privés
 	private $_id;
 	private $_libelle;
 	private $_description;
-	private $_logo;
+	private $_image;
 
 	// Méthode magique pour les setters & getters
 	public function __get($attribut) {
 		if (property_exists($this, $attribut)) 
-                return htmlentities( $this->$attribut );           
+                return ( $this->$attribut ); 
+        else
+			exit("Erreur dans la calsse " . __CLASS__ . " : l'attribut $property n'existe pas!");     
     }
 
     public function __set($attribut, $value) {
@@ -20,7 +22,7 @@ class Categorie extends Mysql
             //$this->$attribut = $value ;
         }
         else
-        	exit("Prop inexistante");
+        	exit("Erreur dans la calsse " . __CLASS__ . " : l'attribut $property n'existe pas!");
     }
 
 	public function details()
@@ -32,7 +34,7 @@ class Categorie extends Mysql
 		
 		$cat->_id 			= $row['id'];
 		$cat->_libelle 		= $row['libelle'];
-		$cat->_logo 		= $row['logo'];
+		$cat->_image 		= $row['image'];
 		$cat->_description	= $row['description'];
 	
 		return $cat;
@@ -49,7 +51,7 @@ class Categorie extends Mysql
 
 			$cat->_id 			= $row['id'];
 			$cat->_libelle 		= $row['libelle'];
-			$cat->_logo 		= $row['logo'];
+			$cat->_image 		= $row['image'];
 			$cat->_description	= $row['description'];
 		
 			$list_cat[]=$cat;
@@ -60,9 +62,9 @@ class Categorie extends Mysql
 	
 	public function ajouter()
 	{
-	    $q = "INSERT INTO categorie(id, libelle, logo, description) VALUES 
+	    $q = "INSERT INTO categorie(id, libelle, image, description) VALUES 
 	  		(  null				, '$this->_libelle'		,
-			  '$this->_logo'	, '$this->_description'	
+			  '$this->_image'	, '$this->_description'	
 			)";
 		$res = $this->requete($q);
 		return mysqli_insert_id($this->get_cnx());
@@ -71,7 +73,7 @@ class Categorie extends Mysql
 	public function modifier(){
 		$q = "UPDATE categorie SET
 			  libelle 	= '$this->_libelle',
-			  logo = IF('$this->_logo' = '', logo, '$this->_logo') ,
+			  image = IF('$this->_image' = '', image, '$this->_image') ,
 			  description = '$this->_description'
 
 			  WHERE id = '$this->_id' ";

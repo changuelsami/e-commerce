@@ -1,6 +1,6 @@
 <?php
-include("../classes/Categorie.php");
-include("../classes/Util.php");
+require_once("../classes/Categorie.php");
+require_once("../classes/Util.php");
 
 @$libelle = $_POST['libelle'];
 @$description = $_POST['description'];
@@ -12,7 +12,7 @@ if( !empty($libelle) && !empty($description) )
 	$util = new Util();
 	$cat->_libelle = $libelle;
 	$cat->_description = $description;
-	$cat->_logo = $util->upload('logo', "../upload/");
+	$cat->_image = $util->upload('image', "../upload/");
 	
 	// Ajout
 	if( empty($id) ) 

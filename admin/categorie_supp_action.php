@@ -1,6 +1,6 @@
 <?php
-include('verifier_access.php'); 
-include("../classes/Categorie.php");
+require_once('verifier_access.php'); 
+require_once("../classes/Categorie.php");
 $cat = new Categorie($bdd);
 
 $cat->_id = $_REQUEST['id'];

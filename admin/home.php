@@ -1,5 +1,5 @@
 <?php 
-include("verifier_access.php");
+require_once("verifier_access.php");
 $id_page = "dashboard";
 
 ?>
@@ -15,7 +15,7 @@ $id_page = "dashboard";
     </head>
     <body>
 
-    <?php include('header.php'); ?>
+    <?php require_once('header.php'); ?>
 	
     <div class="container2">
       <h1><span class="glyphicon glyphicon-dashboard"> </span> Dashboard</h1>
@@ -25,7 +25,7 @@ $id_page = "dashboard";
         
         Nombre des commandes : 999 <br/>
         Nombre des clients : 999 <br/>
-        Nombre des produitd : 999 <br/>
+        Nombre des produits : 999 <br/>
 
     </div>
 

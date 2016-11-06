@@ -6,7 +6,7 @@
 </head><!--/head-->
 
 <body>
-	<?php include("header.php") ?>
+	<?php require_once("header.php") ?>
 	
 	
 	<form id="form" name="form" methode="get">	
@@ -117,7 +117,7 @@
 	</section><!--/#do_action-->
 
 		</form>	
-<?php include("footer.php") ?>
+<?php require_once("footer.php") ?>
 <script>
 	function panier_plus(id_champ_qte)
 	{
