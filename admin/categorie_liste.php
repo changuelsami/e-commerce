@@ -40,7 +40,7 @@ require_once("../classes/Categorie.php");
             <th>SUPPRIMER</th>
           </tr>
         </thead>
-        <thead id="resultat-diporama"> 
+        <tbody id="resultat-diporama"> 
           <?php 
 
           $cat = new Categorie();	
@@ -65,7 +65,7 @@ require_once("../classes/Categorie.php");
            </td>
          </tr>
          <?php  } ?>
-       </thead>
+       </tbody>
      </table>
    </div>        
 
