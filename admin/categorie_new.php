@@ -6,9 +6,7 @@ require_once('verifier_access.php');
 if( !empty($id) ) {
 	require_once("../classes/Categorie.php");
 	$cat= new Categorie();
-	$cat->_id = $id;
-	$cat = $cat->details();
-	//var_dump($cat);
+	$cat = $cat->details($id);
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -32,7 +30,7 @@ if( !empty($id) ) {
   <?php require_once('header.php'); ?>
 
   <div class="container2">
-    <h1><?php if( !empty($id) ) echo "Modifier"; else echo "Ajouter" ?> une catégorie</h1>
+    <h1><?php !empty($id) ? print("Modifier"):print("Ajouter") ?> une catégorie</h1>
   </div>
 
   <div class="container2">
@@ -79,10 +77,12 @@ if( !empty($id) ) {
 
 
      </table>
+
      <?php if( !empty($id) ) { ?>
      <input type="hidden" name="id" value="<?php echo $id; ?>" />
      <?php } ?>
-     <button type="submit" id="submit" class="btn btn-primary"><?php if( !empty($id) ) echo "Modifier"; else echo "Ajouter" ?></button>
+
+     <button type="submit" id="submit" class="btn btn-primary"><?php ( !empty($id) ) ? print ("Modifier"): print ("Ajouter") ?></button>
      <div id="loadimg"><img src="../images/loading.gif" width="25" height="25" /></div>
    </form>
 
@@ -101,14 +101,14 @@ if( !empty($id) ) {
  <script src="bootstrap-wysihtml5/src/bootstrap-wysihtml5.js"></script>
 
  <script>
- $('.textarea').wysihtml5();
- $(prettyPrint);
+   $('.textarea').wysihtml5();
+   $(prettyPrint);
 
- function confirmDelete(delUrl) {
-  if (confirm("Voulez vous vraiment supprimer ce Partenaire ?")) {
-   document.location = delUrl;
+   function confirmDelete(delUrl) {
+    if (confirm("Voulez vous vraiment supprimer ce Partenaire ?")) {
+     document.location = delUrl;
+   }
  }
-}
 </script>
 
 </body>

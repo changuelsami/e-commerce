@@ -12,22 +12,18 @@ if( !empty($libelle) && !empty($description) )
 	$util = new Util();
 	$cat->_libelle = $libelle;
 	$cat->_description = $description;
-	$cat->_image = $util->upload('image', "../upload/");
+	$cat->_image = $util->upload('image', "../upload");
 	
-	// Ajout
-	if( empty($id) ) 
-	{
+	if( empty($id) ) 	// Ajout
 		$id = $cat->ajouter();
-		header("Location: categorie_liste.php");
-	}
-
-	// Modification
-	elseif( !empty($id) ) 
+	else				// Modification
 	{
 		$cat->_id = $id;
 		$cat->modifier();
-		header("Location: categorie_liste.php");
 	}
-	else exit('tous les champs sont obligatoires ! ');
-} else exit('tous les champs sont obligatoires !!');
+
+	header("Location: categorie_liste.php");
+} 
+else 
+	exit('Tous les champs sont obligatoires !!');
 ?>

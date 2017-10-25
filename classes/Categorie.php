@@ -19,15 +19,14 @@ class Categorie extends Mysql
     public function __set($attribut, $value) {
         if (property_exists($this, $attribut)) {
             $this->$attribut = (mysqli_real_escape_string($this->get_cnx(), $value)) ;
-            //$this->$attribut = $value ;
         }
         else
         	exit("Erreur dans la calsse " . __CLASS__ . " : l'attribut $property n'existe pas!");
     }
 
-	public function details()
+	public function details($id)
 	{
-		$q = "SELECT * FROM categorie WHERE id ='$this->_id'";
+		$q = "SELECT * FROM categorie WHERE id ='$id'";
 		$res = $this->requete($q);
 		$row = mysqli_fetch_array( $res); 
 		$cat = new Categorie();
@@ -82,8 +81,8 @@ class Categorie extends Mysql
 		return $res;
 	}
 
-	public function supprimer(){
-		$q = "DELETE FROM categorie WHERE id = '$this->_id'";
+	public function supprimer($id){
+		$q = "DELETE FROM categorie WHERE id = '$id'";
 		$res = $this->requete($q);
 		return $res;
 	}	 

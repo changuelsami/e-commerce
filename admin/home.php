@@ -21,10 +21,9 @@ $id_page = "dashboard";
       <h1><span class="glyphicon glyphicon-dashboard"> </span> Dashboard</h1>
     </div>
 
-    <div class="container2">   
+    <div class="jumbotron">   
         
         Nombre des commandes : 999 <br/>
-        Nombre des clients : 999 <br/>
         Nombre des produits : 999 <br/>
 
     </div>

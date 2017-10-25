@@ -16,100 +16,78 @@ require_once("../classes/Categorie.php");
   <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-            <![endif]-->
-            <?php require_once('header.php'); ?>
 
-            <div class="container2">
-              <h1>Liste des categories
-                :
-                <a type="button" class="btn btn-primary btn-lg pull-right" href="categorie_new.php">
-                  Ajouter une categorie </a>	  </h1>
-                </div>
+  <?php require_once('header.php'); ?>
 
-                <div class="container2">
+  <div class="container2">
+    <h1>Liste des categories
+      :
+      <a type="button" class="btn btn-primary btn-lg pull-right" href="categorie_new.php">
+      Ajouter une categorie </a>	  </h1>
+    </div>
 
-                  <div class="clear"><p>&nbsp;</p></div>
+    <div class="container2">
 
-                  <div id="result">
-                   <table class="table table-striped">   
-                    <thead> 
-                      <tr>
-                        <th>Id</th>
-                        <th>Libelle</th>
-                        <th>MODIFIER</th>
-                        <th>SUPPRIMER</th>
-                      </tr>
-                    </thead>
-                    <thead id="resultat-diporama"> 
-                      <?php 
+      <div class="clear"><p>&nbsp;</p></div>
 
-                      $cat = new Categorie();	
-                      $liste = $cat->liste();
-                      foreach($liste as $data )
-                      {
+      <div id="result">
+       <table class="table table-striped">   
+        <thead> 
+          <tr>
+            <th>Id</th>
+            <th>Libelle</th>
+            <th>MODIFIER</th>
+            <th>SUPPRIMER</th>
+          </tr>
+        </thead>
+        <thead id="resultat-diporama"> 
+          <?php 
 
-                       ?>
-                       <tr>
-                        <td><?php echo $data->_id; ?></td>
-                        <td><?php echo $data->_libelle; ?></td>
+          $cat = new Categorie();	
+          $liste = $cat->liste();
+          foreach($liste as $data )
+          {
 
-                        <td>
-                          <a class="btn btn-primary" href="categorie_new.php?id=<?php echo $data->_id; ?>">
-                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>  Modifier
-                          </a>
-                        </td>
-                        <td>
-                         <a href="javascript:confirmDelete('categorie_supp_action.php?id=<?php echo $data->_id; ?>')" class="btn btn-danger btn-mini">
-                           <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Supp
-                         </a>                 
-                       </td>
-                     </tr>
-                     <?php  } ?>
-                   </thead>
-                 </table>
-               </div>        
+           ?>
+           <tr>
+            <td><?php echo $data->_id; ?></td>
+            <td><?php echo $data->_libelle; ?></td>
 
-               <div style="text-align: center;">
-                <div id="bootstrap-pagination"></div>
-              </div>
+            <td>
+              <a class="btn btn-primary" href="categorie_new.php?id=<?php echo $data->_id; ?>">
+                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>  Modifier
+              </a>
+            </td>
+            <td>
+             <a href="javascript:confirmDelete('categorie_supp_action.php?id=<?php echo $data->_id; ?>')" class="btn btn-danger btn-mini">
+               <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Supp
+             </a>                 
+           </td>
+         </tr>
+         <?php  } ?>
+       </thead>
+     </table>
+   </div>        
 
-            </div>
-            <?php //require_once("categorie_modifier.php"); ?>
-            <hr>
+   <div style="text-align: center;">
+    <div id="bootstrap-pagination"></div>
+  </div>
 
-            <script src="js/jquery.min.js"></script>
-            <script src="js/bootstrap.js"></script>
-            <script src="js/bootstrap-paginator.js"></script>
-            <script src="js/bootstrap.validate.js"></script>
-            <script src="js/bootstrap.validate.en.js"></script>
-            <script type="text/javascript" src="js/jquery.form.js"></script>
-            <script type="text/javascript">
-            $(document).ready(function()
-            {
-              $('.form_valid').bt_validate();
+</div>
+<hr>
 
-              var options = {
-               beforeSend: function()
-               {
-                 $("#resultat-new-diapo").html("");
-                 document.getElementById("loading").style.display = "block";
-               },
-               complete: function(response)
-               {
-                 $("#resultat-new-diapo").html(response.responseText);
-			  //document.getElementById("loading").style.display = "none";
-			}
-    };
-    $("#form_vote").ajaxForm(options);
-  });
-
-            function confirmDelete(delUrl) {
-              if (confirm("Voulez vous vraiment supprimer cette cat ? ?")) {
-               document.location = delUrl;
-             }
-           }
-           </script>
-         </body>
-         </html>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/bootstrap-paginator.js"></script>
+<script src="js/bootstrap.validate.js"></script>
+<script src="js/bootstrap.validate.en.js"></script>
+<script type="text/javascript" src="js/jquery.form.js"></script>
+<script type="text/javascript">
+  function confirmDelete(delUrl) {
+    if (confirm("Voulez vous vraiment supprimer cette cat ? ?")) {
+     document.location = delUrl;
+   }
+ }
+</script>
+</body>
+</html>
