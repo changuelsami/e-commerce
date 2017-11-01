@@ -22,7 +22,7 @@ class Categorie extends Mysql
         }
         else
         	exit("Erreur dans la calsse " . __CLASS__ . " : l'attribut $attribut n'existe pas!");
-    }
+    } 
 
 	public function details($id)
 	{
