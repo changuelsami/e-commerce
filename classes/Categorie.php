@@ -13,7 +13,7 @@ class Categorie extends Mysql
 		if (property_exists($this, $attribut)) 
                 return ( $this->$attribut ); 
         else
-			exit("Erreur dans la calsse " . __CLASS__ . " : l'attribut $property n'existe pas!");     
+			exit("Erreur dans la calsse " . __CLASS__ . " : l'attribut $attribut n'existe pas!");     
     }
 
     public function __set($attribut, $value) {
@@ -21,7 +21,7 @@ class Categorie extends Mysql
             $this->$attribut = (mysqli_real_escape_string($this->get_cnx(), $value)) ;
         }
         else
-        	exit("Erreur dans la calsse " . __CLASS__ . " : l'attribut $property n'existe pas!");
+        	exit("Erreur dans la calsse " . __CLASS__ . " : l'attribut $attribut n'existe pas!");
     }
 
 	public function details($id)
